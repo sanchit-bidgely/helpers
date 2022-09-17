@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+    <style>
+      p {
+        font-size: 12px;
+        font-family: arial, san-serif;
+      }
+    </style>
+    <script>
+      function loadStrings() {
+        var locales = [
+          "en_US",
+          "fr_FR",
+          "de_DE",
+          "en_AU",
+          "en_CA",
+          "en_GB",
+          "fr_CA",
+          "en_DE",
+          "en_FR",
+          "sk_SK",
+          "es_ES",
+          "es_US",
+          "it_IT",
+          "ja_JP",
+          "en_IE",
+          "en_NZ",
+        ];
+        var requests = [];
+        var strings = [
+          {
+            id: "INSIGHTS.USAGE.CHART_TOUDISCLAIMER.YEAR",
+            value: "Demand charges are displayed where applicable.",
+            tags: "ui,public,WEB_SECTION_usage,LP_COMPONENT_WEB_PORTAL",
+          },
+          {
+            id: "INSIGHTS.USAGE.CHART_TOUDISCLAIMER.MONTH",
+            value: "Demand charges are displayed where applicable.",
+            tags: "ui,public,WEB_SECTION_usage,LP_COMPONENT_WEB_PORTAL",
+          },
+          {
+            id: "INSIGHTS.USAGE.CHART_TOUDISCLAIMER.DAY",
+            value: "Demand charges are displayed where applicable.",
+            tags: "ui,public,WEB_SECTION_usage,LP_COMPONENT_WEB_PORTAL",
+          },
+        ];
+        for (var j = 0; j < strings.length; j++) {
+          for (var i = 0; i < locales.length; i++) {
+            requests.push({
+              payload: {
+                id: strings[j].id,
+                locale: locales[i],
+                text: strings[j].value,
+                tags: strings[j].tags,
+              },
+              supportedEnvs: [],
+            });
+          }
+        }
+        document.getElementById("localeStrs").value = JSON.stringify(requests);
+
+        // var colors = [{"configType":null,"key":"color_97","val":"#00927E","version":5,"lastUpdatedTimestamp":1580128070,"documentation":null,"regex":null,"tags":null,"components":null,"dataType":null,"envSpecific":false},{"configType":null,"key":"color_98","val":"#FF0000","version":5,"lastUpdatedTimestamp":1580128070,"documentation":null,"regex":null,"tags":null,"components":null,"dataType":null,"envSpecific":false}];
+        //   var colorConfigs = [];
+        //   for(var i = 0; i < colors.length; i++) {
+        //     colorConfigs.push({
+        //                     "payload": {
+        //                         "key": colors[i].key,
+        //                         "configType" : "default_palette_ui",
+        //                         "val" : colors[i].val,
+        //                         "documentation" : "Color key for the Web color palette",
+        //                         "regex": ".*",
+        //                         "tags": ["ui","LP_KV_READ_ONLY"],
+        //                         "components": [
+        //                           "WEB_PORTAL"
+        //                         ],
+        //                         "dataType": "COLOR"
+        //                     },
+        //                     "supportedEnvs": []
+        //                 });
+        //   }
+        //   document.getElementById("localeStrs").innerHTML=JSON.stringify(colorConfigs);
+      }
+    </script>
+  </head>
+  <body onload="loadStrings()">
+    <h1>Create all supported locales string resources or color configs</h1>
+    <code><textarea id="localeStrs" cols="200" rows="45"></textarea></code>
+  </body>
+</html>
